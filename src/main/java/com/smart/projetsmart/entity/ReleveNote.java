@@ -1,13 +1,10 @@
 package com.smart.projetsmart.entity;
 
-import java.io.Serializable;
-import java.util.Date;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,25 +12,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-public class Etudient  implements Serializable{
+public class ReleveNote {
     
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
     @Id
     private Long id;
-    @Column
-    private String matricule;
-    @Column
-    private String nom;
-    @Column
-    private String prenom;
-    @Column
-    private String email;
-    @Column
-    private String numTelephone;
-    @Column
-    private Date dateNaissance;
+
+    @ManyToOne
+    private  Matier matier;
+    @ManyToOne
+    private Etudient etudient;
+    @ManyToOne
+    private Notes notes;
 
 
 
-    }
+
+}
