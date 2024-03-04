@@ -30,23 +30,23 @@ public class UserServiceImpl implements UserServices {
         userInfo.setPassword(passwordEncoder.encode(userInfo.getPassword()));
         Role roleUse = roleRepository.findById(2).get();
         userInfo.setRole(roleUse);
-        UserRepository.save(userInfo);
+        // UserRepository.save(userInfo);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Override
     public User fidUserByUsername(String username) {
-        return UserRepository.findByUsername(username).get();
+        return appUserRepository.findByUsername(username).get();
     }
 
     @Override
     public void DeleteUser(Integer id) {
-        UserRepository.deleteById(id);
+        appUserRepository.deleteById(id);
     }
 
     @Override
     public boolean findUserById(Integer id) {
-        if (UserRepository.findById(id).isPresent()) {
+        if (appUserRepository.findById(id).isPresent()) {
             return true;
         }
         return false;
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserServices {
 
     public User getUserById(Integer id) {
         if (appUserRepository.findById(id).isPresent()) {
-            return UserRepository.findById(id).get();
+            return appUserRepository.findById(id).get();
         }
         return null;
     }
