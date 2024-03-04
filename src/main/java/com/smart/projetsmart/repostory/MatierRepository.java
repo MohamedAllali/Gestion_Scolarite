@@ -10,6 +10,6 @@ import com.smart.projetsmart.entity.Matier;
 
 @Repository
 public interface MatierRepository extends JpaRepository<Matier, Long> {
-   // Optional<Matier> findByName(String lebelleMatier);
+   Optional<Matier> findByName(String lebelleMatier);
    
 }
